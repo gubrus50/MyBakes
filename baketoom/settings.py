@@ -11,20 +11,26 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
 #import django_heroku
+
+load_dotenv()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('BAKETOOM_SECRET_KEY')
+SECRET_KEY = os.getenv('BAKETOOM_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('BAKETOOM_DEBUG_VALUE') == 'True')
+DEBUG = os.getenv('BAKETOOM_DEBUG', 'False').lower() in ['true', '1']
+
 
 if DEBUG:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -96,11 +102,11 @@ WSGI_APPLICATION = 'baketoom.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('PGDATABASE'),
-        'USER': os.environ.get('PGUSER'),
-        'HOST': os.environ.get('PGHOST'),
-        'PORT': os.environ.get('PGPORT'),
-        'PASSWORD': os.environ.get('PGPASSWORD'),
+        'NAME': os.getenv('PGDATABASE'),
+        'USER': os.getenv('PGUSER'),
+        'HOST': os.getenv('PGHOST'),
+        'PORT': os.getenv('PGPORT'),
+        'PASSWORD': os.getenv('PGPASSWORD'),
     }
 }
 
@@ -158,8 +164,8 @@ LOGIN_REDIRECT_URL = 'recipes-home'
 LOGIN_URL = 'login'
 
 
-EMAIL_HOST_USER = os.environ.get('BAKETOOM_MAIL_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('BAKETOOM_MAIL_PASS')
+EMAIL_HOST_USER = os.getenv('BAKETOOM_MAIL_USER')
+EMAIL_HOST_PASSWORD = os.getenv('BAKETOOM_MAIL_PASS')
 DEFAULT_FROM_EMAIL = '(BakeToom) <'+EMAIL_HOST_USER+'>'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -177,13 +183,16 @@ RECAPTCHA_PRIVATE_KEY = '6Ld6ficlAAAAANWHgl_6PLlWIoo4lKSHIZzFb_pz'
 
 # AWS S3 BUCKETS CONFIG
 
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 
 AWS_S3_REGION_NAME = 'eu-west-2'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+
 
 #django_heroku.settings(locals())

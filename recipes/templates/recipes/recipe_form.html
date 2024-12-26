@@ -35,6 +35,25 @@
       </div>
 
       <div class="recipe-form-container">
+        <h2 class="title text-uppercase">EQUIPMENT <span class="float-end">(optional)</span></h2>
+        <div class="form-group mt-4">
+
+        </div>
+      </div>
+
+      <div class="recipe-form-container video-guide-container">
+        <h2 class="title text-uppercase">VIDEO GUIDE <span class="float-end">(optional)</span></h2>
+        <div class="form-group mt-4">
+          {{ form.video_guide|as_crispy_field }}
+          <div class="d-flex align-items-center loading-snippet">
+            <strong class="loading-snippet-message">Loading...</strong>
+            <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+          </div>
+          <iframe id="video_guide" class="d-none" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+
+      <div class="recipe-form-container">
         <h2 class="title text-uppercase">Method</h2>
         <div class="form-group mt-4">
           {{ form.method|as_crispy_field }}

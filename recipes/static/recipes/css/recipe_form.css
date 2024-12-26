@@ -110,6 +110,10 @@
     grid-gap: 15px;
   }
 
+  #video_guide {
+    width: 100%;
+    height: auto;
+  }
 
   #recipe-submit-form > .warning {
     width: 100%;

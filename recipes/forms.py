@@ -46,6 +46,7 @@ class RecipeForm(forms.ModelForm):
 			'image',
 			'recipe_type',
 			'description',
+			'video_guide',
 			'method',
 			'license',
 			'nationality',

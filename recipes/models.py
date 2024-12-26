@@ -86,6 +86,12 @@ class Recipe(models.Model):
 		verbose_name=_('A brief description of the recipe')
 	)
 
+	video_guide = models.URLField(
+		max_length=2000,
+		blank=True,
+		verbose_name=_('Link to video guide')
+	)
+
 	method = models.TextField(
 		max_length=10000,
 		blank=True,

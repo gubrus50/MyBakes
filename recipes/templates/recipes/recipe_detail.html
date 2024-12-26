@@ -173,8 +173,19 @@
     </div>
 
 
+    <!-- Video Guide -->
+    {% if object.video_guide %}
+    <div class="container video-guide-container">
+      <h2 class="title text-uppercase text-center">VIDEO GUIDE</h2>
+      <div class="mt-4 d-flex justify-content-center">
+        <iframe id="video_guide" width="560" height="315" src="{{ object.video_guide }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+    {% endif %}
+
+
     <!-- Share container -->
-    <div class="text-center container h-mobile pt-5" style="font-family: 'Raleway', sans-serif;">
+    <div class="text-center container h-mobile pt-5 pb-5" style="font-family: 'Raleway', sans-serif;">
       <h3 class="mb-3">Share the recipe with your friends</h3>
       <ul class="list-inline social-media-icons">
         <li class="list-inline-item" name="facebook-icon">

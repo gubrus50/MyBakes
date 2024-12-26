@@ -201,6 +201,7 @@ comma-break:before {
       SESSION-DATE: UTC - {% now "j F Y H:i" %} <comma-break>
       SOURCE: URL - {{ request.META.HTTP_HOST }}{% url 'recipe-detail' recipe.id %}
     </p>
+    <p>{% if recipe.video_guide %}VIDEO GUIDE: {{ recipe.video_guide }}{% endif%}</p>
   </section>
   <br>
   <div id="ingredients">
